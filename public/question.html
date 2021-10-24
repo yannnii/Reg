@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Обратная связь</title>
+  <link rel="stylesheet" href="/public/style.css">
+    <script>
+    function validate() {
+      let email = document.forms["myForm"]["email"].value;
+      let email_regexp = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      if (!email_regexp.test(email)) {
+        document.getElementById("error").innerHTML="Недопустимый Email";
+        return false;
+      }
+      }
+  </script>
+</head>
+<body>
+  <div class="menu">
+    <button><a href="index.html">Регистрация</a></button>
+    <button><a href="question.html">Задать вопрос</a></button>
+    <button><a href="question_read.html">Вопросы</a></button>
+    </div>
+  <form name="myForm" action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+    <label for="question">Задать вопрос</label>
+      <input name="email" placeholder="Адрес электронной почты" type="text">
+      <input name="question" placeholder="Ваш вопрос" type="text" style="height: 200px;">
+      <div class="add">
+      <div class="add_file">Добавить файл:</div>
+      <input name="img" type="file">
+    </div>
+    <div id="error"></div>
+    <button type="submit">Отправить</button>
+  </form>
+</body>
+</html>

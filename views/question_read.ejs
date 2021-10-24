@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Вопросы</title>
+  <link rel="stylesheet" href="/public/style.css">
+  </head>
+<body>
+  <div class="menu">
+  <button><a href="index.html">Регистрация</a></button>
+  <button><a href="question.html">Задать вопрос</a></button>
+  <button><a href="question_read.html">Вопросы</a></button>
+</div>
+<div class="db">
+  <label>Вопросы</label>
+  <table border=1> <td colspan=3></td>
+    <tr> <th>Email</th> <th>Вопрос</th> <th>Фото</th>
+      <% for(var i=0;i<dataRes.length;i++) {%>
+      <tr><th><%= dataRes[i].email %></th> <th><%= dataRes[i].question %></th><th><img src="/upload/<%= dataRes[i].img %>"  width="100px" height="150 px"></th>
+        <% } %>
+  </table>
+</div>
+</body>
+</html>

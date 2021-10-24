@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="/public/style.css">
+  <script>
+    function validate() {
+
+      let login = document.forms["myForm"]["login"].value;
+      let login_regexp = /^[0-9a-zA-z_\d]{6,12}$/;
+      if (!login_regexp.test(login)) {
+        document.getElementById("error").innerHTML="Логин должен содержать не менее 6 и не более 12 символов, только буквы латинского алфавита, цифры, символ подчеркивания";
+        return false;
+      }
+
+      let password_regexp = /^[0-9a-zA-z_\d]{6,12}$/;
+      let password = document.forms["myForm"]["password"].value;
+      if (!password_regexp.test(password)) {
+          document.getElementById("error").innerHTML="Пароль должен содержать не менее 6 и не более 12 символов, буквы латинского алфавита, цифры, символ подчеркивания";
+          return false;
+      }
+
+      let password1 = document.forms["myForm"]["password"].value;
+      let password2 = document.forms["myForm"]["repass"].value;
+      if (password1 != password2) {
+        document.getElementById("error").innerHTML="Пароли не совпадают";
+        return false;
+      }
+
+      let email = document.forms["myForm"]["email"].value;
+      let email_regexp = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      if (!email_regexp.test(email)) {
+        document.getElementById("error").innerHTML="Недопустимый Email";
+        return false;
+      }
+      }
+  </script>
+</head>
+<body>
+  <div class="menu">
+  <button><a href="index.html">Регистрация</a></button>
+  <button><a href="question.html">Задать вопрос</a></button>
+  <button><a href="question_read.html">Вопросы</a></button>
+  </div>
+  <form name="myForm" action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+  <label for="signup">Регистрация</label>
+  <input name="login" placeholder="Логин" type="text" required>
+  <input name="email" placeholder="Email" type="text" required>
+  <input name="password" placeholder="Пароль" type="password" required>
+  <input name="repass" placeholder="Повторите пароль" type="password" required>
+  <div class="add">
+  <div class="add_file">Добавить аватар:</div>
+  <input name="img" type="file" required>
+</div>
+<div id="error"></div>
+<button type="submit" name="but">Зарегистрироваться</button>
+</form>
+</body>
+</html>
