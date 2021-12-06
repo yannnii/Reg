@@ -72,6 +72,14 @@ input[type="password"] {
 	justify-content: space-around;
 }
 
+#str {
+  font-size: 24px;
+  font-family: 'Raleway', sans-serif;
+  text-indent: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 #error{
   font-size: 20px;
   font-family: 'Raleway', sans-serif;
@@ -79,9 +87,11 @@ input[type="password"] {
   color: red;
   margin-bottom: 10px;
 }
-
+s
 table{
-  background:  #079BCF;
+  background:  #3D91D8;
+  font-family: 'Raleway', sans-serif;
+  font-size: 26px;
 }
 
 button {

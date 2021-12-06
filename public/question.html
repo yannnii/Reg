@@ -17,17 +17,18 @@
 </head>
 <body>
   <div class="menu">
-    <button><a href="index.html">Регистрация</a></button>
-    <button><a href="question.html">Задать вопрос</a></button>
-    <button><a href="question_read.html">Вопросы</a></button>
+  <button><a href="index.html">Регистрация</a></button>
+  <button><a href="auth.html">Вход</a></button>
+  <button><a href="question.html">Задать вопрос</a></button>
+  <button><a href="question_read.html">Вопросы</a></button>
     </div>
   <form name="myForm" action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
     <label for="question">Задать вопрос</label>
       <input name="email" placeholder="Адрес электронной почты" type="text">
-      <input name="question" placeholder="Ваш вопрос" type="text" style="height: 200px;">
+      <input name="question" placeholder="Ваш вопрос" type="text" style="height: 200px;" required>
       <div class="add">
       <div class="add_file">Добавить файл:</div>
-      <input name="img" type="file">
+      <input name="img" type="file" required>
     </div>
     <div id="error"></div>
     <button type="submit">Отправить</button>

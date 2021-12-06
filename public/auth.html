@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <div class="menu">
+  <button><a href="index.html">Регистрация</a></button>
+  <button><a href="auth.html">Вход</a></button>
+  <button><a href="question.html">Задать вопрос</a></button>
+  <button><a href="question_read.html">Вопросы</a></button>
+  </div>
+  <form name="myForm" action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+  <label for="signup">Вход</label>
+  <input name="login" placeholder="Логин" type="text" required>
+  <input name="password" placeholder="Пароль" type="password" required>
+  <div id="str"></div>
+  <input class="input-num" type="text" required>
+  <div id="error"></div>
+  <button type="submit" name="but">Войти</button>
+  </form>
+
+  <script>
+    let num1 = Math.ceil(Math.random() * 10);
+    let num2 = Math.ceil(Math.random() * 10);
+    let res = num1 + num2;
+    document.getElementById("str").innerHTML = `${num1} + ${num2} = `;
+    function validate() {
+
+    let inputNum = document.querySelector(".input-num").value;
+    inputNum = parseInt(inputNum);
+    if (inputNum === res) 
+    {
+      console.log("Вход разрешён");
+    }
+    else 
+    {
+      console.log("Вход запрещен");
+      num1 = Math.ceil(Math.random() * 10);
+      num2 = Math.ceil(Math.random() * 10);
+      res = num1 + num2;
+      document.getElementById("str").innerHTML = `${num1} + ${num2} = `;
+      document.getElementById("error").innerHTML="Неверное решение. Повторите ввод";
+      return false;
+    }
+
+    let login = document.forms["myForm"]["login"].value;
+    let login_regexp = /^[0-9a-zA-z_\d]{6,12}$/;
+    if (!login_regexp.test(login)) {
+      document.getElementById("error").innerHTML="Логин должен содержать не менее 6 и не более 12 символов, только буквы латинского алфавита, цифры, символ подчеркивания";
+      return false;
+    }
+
+    let password_regexp = /^[0-9a-zA-z_\d]{6,12}$/;
+    let password = document.forms["myForm"]["password"].value;
+    if (!password_regexp.test(password)) {
+        document.getElementById("error").innerHTML="Пароль должен содержать не менее 6 и не более 12 символов, буквы латинского алфавита, цифры, символ подчеркивания";
+        return false;
+    }
+
+    let password1 = document.forms["myForm"]["password"].value;
+    let password2 = document.forms["myForm"]["repass"].value;
+    if (password1 != password2) {
+      document.getElementById("error").innerHTML="Пароли не совпадают";
+      return false;
+    }
+
+    let email = document.forms["myForm"]["email"].value;
+    let email_regexp = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    if (!email_regexp.test(email)) {
+      document.getElementById("error").innerHTML="Недопустимый Email";
+      return false;
+    }
+    }
+  </script>
+</body>
+</html>
